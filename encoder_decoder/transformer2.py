@@ -84,7 +84,7 @@ class TransformerEncoderC(nn.Module):
     def forward(self, src_tokens, encoder_mode="gumbel", encoder_temperature=-1, need_weights=False, **unused):
         # embed tokens and positions
         embedding = self.embed_tokens(src_tokens)        
-        g = self.embed_scale * embedding0
+        g = self.embed_scale * embedding
         g += self.embed_positions(src_tokens)
         g = F.dropout(g, p=self.dropout, training=self.training)
         # B x T x C -> T x B x C
@@ -113,7 +113,7 @@ class TransformerEncoderC(nn.Module):
 
         return {
             'encoder_g': g,  # T x B x C
-            'encoder_attn': attn,  # T x B x C
+            'encoder_attn': attn_list,  # T x B x C
             'encoder_padding_mask': encoder_padding_mask,  # B x T
             'encoder_attn_data_list' : attn_data_list
         }
