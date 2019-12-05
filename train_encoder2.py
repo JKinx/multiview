@@ -172,7 +172,6 @@ def main(opts):
         checkpoint = torch.load(opts.train_from)
         model.load_state_dict(checkpoint['model'])
         num_updates = checkpoint["num_updates"]
-        num_updates = 0
     print(num_updates)
         
     optimizer = FairseqAdam(opts, list(model.parameters()))

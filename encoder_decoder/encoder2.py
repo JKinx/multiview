@@ -11,7 +11,7 @@ class Model(nn.Module):
         self.h_mode = h_mode
         
     def forward(self, x, **attn_args):
-        attn_list = self.encoderC(x, **attn_args)["encoder_attn"][0]
+        attn_list = self.encoderC(x, **attn_args)["encoder_attn"]
         if self.h_mode == "first":
             h = self.encoderV(x, attn_list)["encoder_h"][0]
         else:

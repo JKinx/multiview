@@ -247,8 +247,6 @@ class TransformerEncoderLayerV(nn.Module):
 
     def __init__(self, args):
         super().__init__()
-        self.layer_num = i
-        
         self.embed_dim = args.encoder_embed_dim
         self.self_attn = MultiheadAttentionV(
             self.embed_dim, args.encoder_attention_heads,

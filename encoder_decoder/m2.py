@@ -70,7 +70,6 @@ class MultiheadAttentionC(nn.Module):
 
         tgt_len, bsz, embed_dim = g.size()
         assert embed_dim == self.embed_dim
-        assert list(g.size()) == [tgt_len, bsz, embed_dim]
 
         if self.self_attention:
             # self-attention
@@ -205,9 +204,8 @@ class MultiheadAttentionV(nn.Module):
             shape : bsz * num_heads X trg_len X src_len
         """
 
-        tgt_len, bsz, embed_dim = g.size()
+        tgt_len, bsz, embed_dim = h.size()
         assert embed_dim == self.embed_dim
-        assert list(h.size()) == [tgt_len, bsz, embed_dim]
 
         if self.self_attention:
             # self-attention
